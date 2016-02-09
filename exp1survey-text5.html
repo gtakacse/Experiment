@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- Experiment 1. implementation with survey-text -->
+<html>
+  <head>
+    <title>Experiment 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="jspsych-5.0/jspsych.js"></script>
+    <script src="jspsych-5.0/plugins/jspsych-text.js"></script>
+	<script src="jspsych-5.0/plugins/jspsych-survey-text.js"></script>
+	<script src="stim_list_exp1.js"></script>
+    <link href="jspsych-5.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+	<style>
+	body{
+		background-color: black;
+		color: white;
+	}
+	p{
+		text-align: center;
+		font-size: 20px;
+	}
+	textarea{
+		margin-left:30%;
+		margin-right:70%;
+	}
+	.jspsych-btn.jspsych-survey-text {
+		margin-left:40%;
+		margin-right:60%;
+		font: normal 14px arial, sans-serif;
+	}
+	</style>
+	<meta charset="UTF-8">
+  </head>
+  <body>
+	  <div id="jspsych-target"></div>
+  </body>
+  <script>
+  /* the paths to the vidos are in stim_list.js */
+  var question = ["<p>What happened in the video?</p>" +
+  "<p>Describe in one sentence what you have seen.</p>"];
+
+	  var timeline = [];
+  for (var i =0; i < shuffled_paths.length; i++){
+	  var test_block ={
+	  	type: "survey-text",
+		preamble: shuffled_paths[i],
+		  questions: question,
+		  rows: 1
+	  };  	
+	
+	timeline.push(test_block);
+  };
+	  
+
+	  /* EXPERIMENT FLOW */
+
+	  
+	  
+	  
+	  /* START EXPERIMENT */
+	  jsPsych.init({
+		display_element: $('#jspsych-target'),
+	  	timeline: timeline,
+		on_finish: function(){
+			jsPsych.data.displayData();
+		}
+	  });
+	  
+	  
+  </script>
+</html>
